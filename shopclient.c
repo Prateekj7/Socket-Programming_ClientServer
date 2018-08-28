@@ -23,15 +23,15 @@ int main(void)
     }
  
   serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(5000);//assign the port number
-  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");//assign a the ip address of server
+  serv_addr.sin_port = htons(5000);/*assign the port number*/
+  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");/*assign a the ip address of server*/
  
   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr))<0)
     {
       printf("\n Error : Connect Failed \n");
       return 1;
     }
-	//after connection write the data to server
+	/*after connection write the data to server*/
         printf("Welcome to our shop\n");
 	printf("Please enter the first letter of the item you want to buy followed by the quantity\n");
         fgets(sendBuff,1025,stdin);
@@ -41,8 +41,8 @@ int main(void)
                      close(sockfd);
                 }
 
-                //printf("Server:Msg being sent: %s\nNumber of bytes sent: %d\n",sendBuff, strlen(sendBuff));
-        //read the data send by server
+                /*printf("Server:Msg being sent: %s\nNumber of bytes sent: %d\n",sendBuff, strlen(sendBuff));*/
+        /*read the data send by server*/
                  num = recv(sockfd, recvBuff, sizeof(recvBuff),0);
                 if ( num <= 0 )
                 {
@@ -51,7 +51,7 @@ int main(void)
                 }
 
                 recvBuff[num] = '\0';
-               // printf("Client:Message Received From Server -  %s\n",recvBuff);
+               /* printf("Client:Message Received From Server -  %s\n",recvBuff);*/
            
     close(sockfd); 
   return 0;
