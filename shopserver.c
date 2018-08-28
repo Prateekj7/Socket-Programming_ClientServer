@@ -16,9 +16,11 @@ int main(void)
   char sendBuff[1025];
   char recvBuff[1024];  
   int numrv;  
-  int mango=30, orange=30, guava=30, petrol=30 ,sav;
+  int mango=30, orange=30, guava=30, /*petrol=30*/ ,sav;
   char new1[50];
   int new,i;
+while(1)
+{
   listenfd = socket(AF_INET, SOCK_STREAM, 0);
   printf("socket retrieve success\n");
   
@@ -40,10 +42,11 @@ int main(void)
       printf("\nMango\t%d", mango);
       printf("\nOrange\t%d",orange);
       printf("\nGuava\t%d",guava);
-      printf("\nPetrol\t%d",petrol);
+	
+      /*printf("\nPetrol\t%d",petrol);*/
   
-  while(1)
-    {
+  //while(1)
+    
       
         connfd = accept(listenfd, (struct sockaddr*)NULL ,NULL);	  // accept awaiting request
 	 //read the data send by client
@@ -104,7 +107,7 @@ int main(void)
                    }
         //write the data for client   
                //fgets(sendBuff,1025,stdin);
-                printf("\nMango\t%d\nOrange\t%d\nGuava\t%d\nPetrol\t%d\n",mango,orange,guava,petrol);
+                printf("\nMango\t%d\nOrange\t%d\nGuava\t%d\n\n",mango,orange,guava/*petrol*/);
                 if ((send(connfd,sendBuff,strlen(sendBuff),0))== -1) 
                 {
                      fprintf(stderr, "Failure Sending Message\n");
